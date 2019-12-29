@@ -1,0 +1,117 @@
+/** ########### Timer Component ###########**/
+.Timer {
+    position: relative;
+    width: 270px;
+    height: 270px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.Timer-countdown {
+    position: absolute;
+    top: 120px;
+    left: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: auto;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #333;
+    z-index: 20;
+}
+
+.Timer-controls {
+    position: absolute;
+    top: 190px;
+    left: 135px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+}
+
+.Timer-button {
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    font-size: 1rem;
+}
+
+.Timer-play,
+.Timer-pause {
+    pointer-events: none;
+}
+
+.Timer-pause {
+    display: none;
+}
+
+/** ########### Circle Component ###########**/
+.Circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+    z-index: 10;
+}
+
+.Circle-progress {
+    --animationLength: 1500s;
+    stroke: #FF3D00;
+    stroke-width: 4;
+    fill: none;
+    stroke-dasharray: 754px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+}
+
+.Circle-progress.is-active {
+    animation: countdown var(--animationLength) linear forwards;
+}
+.Circle-progress.is-running {
+    animation-play-state: running;
+}
+.Circle-progress.is-paused {
+    animation-play-state: paused;
+}
+
+/** ########### Component's Animation ###########**/
+
+@keyframes countdown {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: 754px;
+    }
+}
+
+/** ########### Button Component ###########**/
+.Button-label {
+    margin-top: 10px;
+    text-align: center;
+    letter-spacing: 0.1rem;
+}
+
+/** ########### Utilities ###########**/
+
+.u-display-flex {
+    display: flex;
+}
+
+.u-direction-column {
+    flex-direction: column;
+}
+
+.u-justify-content-center {
+    justify-content: center;
+}
+
+.u-justify-content-flexStart {
+    justify-content: flex-start;
+}
+
+.u-align-items-center {
+    align-items: center;
+}
