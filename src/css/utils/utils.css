@@ -1,19 +1,31 @@
-.display-flex {
-    display: flex;
+.display_flex {
+  display: flex;
 }
 
-.direction-column {
-    flex-direction: column;
+.display_none {
+  display: none;
 }
 
-.justify-content-center {
-    justify-content: center;
+.display_block {
+  display: block;
 }
 
-.justify-content-flexStart {
-    justify-content: flex-start;
+.display_inlineBlock {
+  display: inline-block;
 }
 
-.align-items-center {
-    align-items: center;
+.direction_column {
+  flex-direction: column;
+}
+
+.justifyContent_center {
+  justify-content: center;
+}
+
+.justifyContent_flexStart {
+  justify-content: flex-start;
+}
+
+.alignItems_center {
+  align-items: center;
 }
