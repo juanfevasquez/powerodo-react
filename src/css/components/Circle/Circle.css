@@ -1,0 +1,27 @@
+.svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+    z-index: 10;
+}
+
+.progress {
+    --animationLength: 1500s;
+    stroke: #FF3D00;
+    stroke-width: 4;
+    fill: none;
+    stroke-dasharray: 754px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+}
+
+.is-active {
+    animation: countdown var(--animationLength) linear forwards;
+}
+.is-running {
+    animation-play-state: running;
+}
+.is-paused {
+    animation-play-state: paused;
+}

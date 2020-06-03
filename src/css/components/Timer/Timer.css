@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.countdown {
+  position: absolute;
+  top: 120px;
+  left: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: auto;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #333;
+  z-index: 20;
+}
+
+.controls {
+  position: absolute;
+  top: 190px;
+  left: 135px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+}
+
+.pointer-events {
+  pointer-events: none;
+}
+
+.button {
+  composes: display_flex direction_column alignItems_center justifyContent-flexStart from "../../utils/utils.css";
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.label {
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.pause {
+  composes: pointer-events;
+  display: none;
+}
