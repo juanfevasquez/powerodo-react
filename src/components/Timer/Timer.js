@@ -16,6 +16,8 @@ class Timer extends React.Component {
       prependZeroToSeconds: false,
       timerIsOn: false,
       timerId: null,
+      isActive: false,
+      isRunning: false,
     };
   }
 
@@ -35,11 +37,16 @@ class Timer extends React.Component {
       const timer = setInterval(this.updateSeconds.bind(this), 1000);
       this.setState({
         timerId: timer,
+        isActive: true,
+        isRunning: true,
       });
     }
 
     if (!this.state.timerIsOn) {
       clearInterval(this.state.timerId);
+      this.setState({
+        isRunning: false,
+      });
     }
   }
 
@@ -88,7 +95,10 @@ class Timer extends React.Component {
     return (
       <div>
         <div className={timer.container}>
-          <Circle />
+          <Circle
+            isActive={this.state.isActive}
+            isRunning={this.state.isRunning}
+          />
           <div className={timer.countdown}>
             <Numbers
               prependZero={this.state.prependZeroToMinutes}

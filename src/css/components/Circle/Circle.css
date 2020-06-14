@@ -1,27 +1,40 @@
 .svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: rotateY(-180deg) rotateZ(-90deg);
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+  z-index: 10;
 }
 
 .progress {
-    --animationLength: 1500s;
-    stroke: #FF3D00;
-    stroke-width: 4;
-    fill: none;
-    stroke-dasharray: 754px;
-    stroke-dashoffset: 0px;
-    stroke-linecap: round;
+  /*660 seconds is the equivalent to 11 minutes.
+    TODO: Assign value dynamically*/
+  --animationLength: 660s;
+  stroke: #000000;
+  stroke-width: 4;
+  fill: none;
+  stroke-dasharray: 754px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
 }
 
-.is-active {
-    animation: countdown var(--animationLength) linear forwards;
+.isActive {
+  animation: countdown var(--animationLength) linear forwards;
 }
-.is-running {
-    animation-play-state: running;
+.isRunning {
+  animation-play-state: running;
 }
-.is-paused {
-    animation-play-state: paused;
+.isPaused {
+  animation-play-state: paused;
+}
+
+/** ########### Component's Animation ###########**/
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 754px;
+  }
 }

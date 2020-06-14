@@ -51,5 +51,4 @@
 
 .pause {
   composes: pointer-events;
-  display: none;
 }
