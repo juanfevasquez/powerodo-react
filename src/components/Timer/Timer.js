@@ -3,33 +3,35 @@ import Numbers from "../Numbers/Numbers";
 import Circle from "../Circle/Circle";
 import Controls from "../Controls/Controls";
 import timer from "../../css/components/Timer/Timer.css";
-import u from "../../css/utils/utils.css";
 
 class Timer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      minutes: 11,
-      seconds: 11,
+      minutes: 1,
+      seconds: 10,
       prependZeroToMinutes: false,
       prependZeroToSeconds: false,
       timerIsOn: false,
       timerId: null,
       isActive: false,
       isRunning: false,
+      isFinished: false,
     };
   }
 
   toggleTimerHandler = () => {
-    this.setState(
-      {
-        timerIsOn: !this.state.timerIsOn,
-      },
-      () => {
-        this.tick();
-      }
-    );
+    if (!this.state.isFinished) {
+      this.setState(
+        {
+          timerIsOn: !this.state.timerIsOn,
+        },
+        () => {
+          this.tick();
+        }
+      );
+    }
   };
 
   tick() {
@@ -51,7 +53,12 @@ class Timer extends React.Component {
   }
 
   updateSeconds() {
-    if (this.state.seconds == 0) {
+    if (this.state.seconds == 0 && this.state.minutes == 0) {
+      this.setState({
+        timerIsOn: false,
+        isFinished: true,
+      });
+    } else if (this.state.seconds == 0) {
       this.setState({
         seconds: 59,
         prependZeroToSeconds: false,
@@ -74,16 +81,17 @@ class Timer extends React.Component {
   }
 
   updateMinutes() {
-    if (this.state.minutes == 0) {
-      this.setState({
-        minutes: 11,
-      });
-    } else {
-      this.setState({
+    this.setState(
+      {
         minutes: --this.state.minutes,
-      });
-    }
+      },
+      () => {
+        this.checkZeroToMinutes();
+      }
+    );
+  }
 
+  checkZeroToMinutes() {
     if (this.state.minutes < 10) {
       this.setState({
         prependZeroToMinutes: true,
